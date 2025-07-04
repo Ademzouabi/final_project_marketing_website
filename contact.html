@@ -42,7 +42,7 @@
     </div>
     <div id="hero_contact">
         <h2>contact us</h2>
-        <div><form action="/contact" method="POST">
+        <div><form id="contactForm"action="/contact" method="POST">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <label for="subject">Subject:</label>
@@ -60,6 +60,55 @@
 
         
     </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Get the form
+    const form = document.querySelector('#hero_contact form');
+
+    if (form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent form submission
+      // Get form values
+        const username = document.getElementById('username').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+      // Validate
+        let errors = [];
+
+        if (username.length < 3) {
+        errors.push('Username must be at least 3 characters');
+        }
+
+        if (subject.length < 2) {
+            errors.push('Subject is required');
+        } 
+
+        if (!email.includes('@') || !email.includes('.')) {
+        errors.push('Valid email is required');
+        }
+
+        if (password.length < 6) {
+            errors.push('Password must be at least 6 characters');
+        }
+
+        if (message.length < 10) {
+            errors.push('Message must be at least 10 characters');
+        }
+
+      // Show errors or success
+        if (errors.length > 0) {
+            alert('Please fix these errors:\n\n' + errors.join('\n'));
+        } else {
+            alert('Thank you! Your message has been sent.');
+        form.reset();
+        }
+    });
+    }
+});
+</script>
     </body>
     <footer>
         <p>Contact us: <a href="mailto:info@happyleaf.com">info@happyleaf.com</a></p>
