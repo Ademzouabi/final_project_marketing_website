@@ -1,0 +1,102 @@
+<html>
+<head>
+    <title>Shop Now - Happy Leaf</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div id="title">
+            <h1><a href="index.html" style="color: inherit; text-decoration: none;">Happy Leaf</a></h1>
+        </div>
+        <div id="nav">
+            <button><a href="contact.html">Contact</a></button>
+            <a href="cart.html" class="logo">
+                <img src="/plant_photos/shopping-cart-icon-free-vector.jpg" height="45" width="50" alt="Cart" />
+            </a>
+            <a href="signup.html" class="login-icon">
+                <img src="/plant_photos/user-icon-trendy-flat-style-600nw-1697898655.webp" height="45" width="50" alt="Login" />
+            </a>
+        </div>
+    </nav>
+
+    <h2>Shop Our Collection</h2>
+    <div class="products">
+        <div class="product">
+            <img src="/plant_photos/best_seller_monstera.jpg" alt="Monstera Deliciosa" />
+            <h5>Monstera Deliciosa</h5>
+            <p class="old-price">$54.99</p>
+            <p class="discount-price">$43.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="/plant_photos/best_seller_canna_lilly.jpg" alt="Variegated Canna Lily" />
+            <h5>Variegated Canna Lily</h5>
+            <h4>Outdoor Plant</h4>
+            <p>$30.39</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="/plant_photos/best_seller_aloevera.jpg" alt="Aloe Vera" />
+            <h5>Aloe Vera</h5>
+            <h4>Succulent</h4>
+            <p>$15.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="/plant_photos/best_seller_orchids.jpg" alt="Phalaenopsis Orchids" />
+            <h5>Phalaenopsis Orchids</h5>
+            <h4>Flowering Plant</h4>
+            <p>$24.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="/plant_photos/best_seller_calathia.jpg" alt="Calathea Orbifolia" />
+            <h5>Calathea Orbifolia</h5>
+            <h4>Exotic Plant</h4>
+            <p>$28.79</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="/plant_photos/best_seller_mint.jpg" alt="Mint Plant" />
+            <h5>Mint Plant</h5>
+            <h4>Herb Plant</h4>
+            <p>$12.99</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Contact us: <a href="mailto:info@happyleaf.com">info@happyleaf.com</a></p>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a>
+        </div>
+        <p>Terms of Service | Privacy Policy</p>
+        <p>Address: 123 Plant Street, Green City, Country</p>
+        <p>Phone: +1 (123) 456-7890</p>
+        <p>&copy; 2025 Happy Leaf. All rights reserved.</p>
+    </footer>
+    <script>
+document.querySelectorAll('.product button').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        const product = btn.parentElement;
+        const name = product.querySelector('h5').innerText;
+        const price = product.querySelector('p').innerText.replace('$', '');
+        const img = product.querySelector('img').src;
+
+        // Get existing cart or create new
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({ name, price, img });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(name + " added to cart!");
+    });
+});
+</script>
+</body>
+<style>
+    body{margin-top:100px;}
+</style>
+</html>
